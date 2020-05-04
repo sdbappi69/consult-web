@@ -2,7 +2,7 @@
 <ul class="navbar-nav menu">
 	<!-- Home -->
 	<li>
-		<a class="active-link" href="home">Home</a>
+		<a class="active-link" href="{{ url('/') }}/home">Home</a>
 	</li>
 	<!-- Services -->
 	<li class="dropdown">
@@ -10,34 +10,20 @@
 			<span class="fa fa-angle-down mrg-l"></span>
 		</a>
 		<ul class="dropdown-menu custom" aria-labelledby="dLabel-services">
-			<li>
-				<a href="shared-hosting.html">
-					<span class="fa fa-group menu-ser"></span>Shared Hosting</a>
-			</li>
-			<li>
-				<a href="cloud-hosting.html">
-					<span class="fa fa-cloud menu-ser"></span>Cloud Hosting</a>
-			</li>
-			<li>
-				<a href="vps-hosting.html">
-					<span class="fa fa-download menu-ser"></span>Vps Hosting</a>
-			</li>
-			<li>
-				<a href="wordpress-hosting.html">
-					<span class="fa fa-wordpress menu-ser"></span>Wordpress Hosting</a>
-			</li>
-			<li>
-				<a href="ecommerce-hosting.html">
-					<span class="fa fa-shopping-bag menu-ser"></span>E-Commerce Hosting</a>
-			</li>
-			<li>
-				<a href="dedicated-hosting.html">
-					<span class="fa fa-server menu-ser"></span>Dedicated Hosting</a>
-			</li>
-			<li>
-				<a href="domains.html">
-					<span class="fa fa-globe menu-ser"></span>Domains</a>
-			</li>
+			@foreach(App\Service::orderBy('name','asc')->get() as $data)
+				@php
+					$attributes = json_decode($data->attributes, true);
+					if(isset($attributes['fa_icon']) && $attributes['fa_icon'] != ''){
+						$fa_icon = $attributes['fa_icon'];
+					}else{
+						$fa_icon = 'fa-circle';
+					}
+				@endphp
+				<li>
+					<a href="{{ url('/') }}/service/{{ $data->alias }}">
+					<span class="fa {{ $fa_icon }} menu-ser"></span>{{ $data->name }}</a>
+				</li>
+			@endforeach
 		</ul>
 	</li>
 	<li>
