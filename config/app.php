@@ -15,6 +15,7 @@ return [
 
     'name' => env('APP_NAME', 'Laravel'),
     'image_path' => env('IMAGE_PATH', 'http://localhost/consult/public/uploads/'),
+    'upload_path' => env('UPLOAD_PATH', '../../consult/public/uploads'),
     /*
     |--------------------------------------------------------------------------
     | Application Environment

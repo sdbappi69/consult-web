@@ -76,10 +76,11 @@ class RegisterController extends Controller
             if ($data->file('image')) {
                 $file = $data->file('image');
                 $image = time() . rand(1111, 9999) . '.' . $file->getClientOriginalExtension();
-                $img_upload_path = 'uploads/';
+                $img_upload_path = config('app.upload_path');
                 $file->move($img_upload_path, $image);
             }
         }
+        dd($image);
         $user =  User::create([
             'name' => $data->name,
             'email' => $data->email,

@@ -15,3 +15,10 @@ use Illuminate\Support\Facades\Route;
 Auth::routes();
 
 Route::get('/', 'HomeController@index')->name('home');
+Route::group(['middleware' => 'auth'],function (){
+    //  Profile routes
+    Route::group(['prefix' => 'profile'],function (){
+        Route::get('/','UserController@profile')->name('profile');
+        Route::post('/update','UserController@profileUpdate')->name('profile.update');
+    });
+});

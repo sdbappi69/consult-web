@@ -22,3 +22,7 @@
     padding: 30px;
     width: auto;
 }
+
+.navbar-collapse{
+    line-height: 40px !important;
+}

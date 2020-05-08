@@ -2,7 +2,7 @@
 <ul class="navbar-nav menu">
 	<!-- Home -->
 	<li>
-		<a class="active-link" href="home">Home</a>
+		<a class="active-link" href="{{route('home')}}">Home</a>
 	</li>
 	<!-- Services -->
 	<li class="dropdown">
@@ -46,16 +46,18 @@
 	<!-- ClientArea -->
 	<li class="dropdown">
 		@if(auth()->check())
-			<a class="dropdown-toggle" id="dLabel-services" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> {{auth()->user()->name}}
+			<a class="dropdown-toggle" id="dLabel-services" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+				<img src="{{config('app.image_path').json_decode(auth()->user()->attributes)->image_url}}" style="width: 40px;border-radius: 50%" alt="">
+				{{auth()->user()->name}}
 				<span class="fa fa-angle-down mrg-l"></span>
 			</a>
 			<ul class="dropdown-menu custom" aria-labelledby="dLabel-services">
 				<li>
-					<a href="shared-hosting.html">
+					<a href="{{route('profile')}}">
 						<span class="fa fa-user menu-ser"></span>Profile</a>
 				</li>
 				<li>
-					<a href="cloud-hosting.html">
+					<a href="javascript:void(0)" onclick="passwordModal()">
 						<span class="fa fa-key menu-ser"></span>Change Password</a>
 				</li>
 				<li>

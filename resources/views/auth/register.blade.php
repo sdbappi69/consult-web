@@ -76,7 +76,7 @@
                             </div>
                             <div class="form-group">
                                 <div class="input-group">
-                                    <input id="birth_date" type="text" class="form-control datepicker @error('birth_date') is-invalid @enderror" placeholder="Birth Date" name="birth_date" value="{{ old('birth_date') }}" required>
+                                    <input id="birth_date" type="text" class="form-control datepicker @error('birth_date') is-invalid @enderror datetime" placeholder="Birth Date" name="birth_date" value="{{ old('birth_date') }}" required>
                                     <div class="input-group-addon">
                                         <i class="fa fa-calendar"></i>
                                     </div>

@@ -22,6 +22,7 @@
     <!-- Custom Style -->
     <link href="{{asset('/')}}css/style.css" rel="stylesheet">
     <link href="{{asset('/')}}css/default_theme.css" rel="stylesheet">
+    <link href="{{asset('/')}}css/bootstrap-datepicker/bootstrap-datepicker.min.css" rel="stylesheet">
     <!-- Responsive Style -->
     <link href="{{asset('/')}}css/responsive.css" rel="stylesheet">
     <link href="{{asset('/')}}css/custom.css" rel="stylesheet">
@@ -95,9 +96,16 @@
 <script src="{{asset('/')}}js/bootstrap.min.js"></script>
 <!-- Owl Carousel -->
 <script src="{{asset('/')}}js/owl.carousel.min.js"></script>
+<script src="{{asset('/')}}css/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
 <!-- Plugins -->
 <script src="{{asset('/')}}js/plugins.js"></script>
-
+<script>
+    $(document).ready(function () {
+        $('.datetime').datepicker({
+            format:'yyyy-m-d'
+        })
+    })
+</script>
 </body>
 
 </html>

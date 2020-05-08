@@ -24,6 +24,7 @@
 		<link href="{{ url('/') }}/css/default_theme.css" rel="stylesheet">
 		<!-- Responsive Style -->
 		<link href="{{ url('/') }}/css/responsive.css" rel="stylesheet">
+		<link href="{{ url('/') }}/css/custom.css" rel="stylesheet">
 
 		<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -49,6 +50,44 @@
 			@include('layout.footer')
 		</div>
 
+		<div class="modal modal-warning" id="passwordModal">
+			<div class="modal-dialog">
+				<div class="modal-content modal-sm">
+					<!-- Modal Header -->
+					<div class="modal-header">
+						<h4 class="modal-title">Change Password</h4>
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
+					</div>
+					<form _lpchecked="1" action="{{route('profile.update')}}" method="post" enctype="multipart/form-data">
+					{{csrf_field()}}
+					<!-- Modal body -->
+						<div class="modal-body">
+
+							<div class="col-md-12 col-sm-6">
+								<div class="form-group">
+									<label for="old_password">Old Password</label>
+									<input type="password" class="form-control" name="old_password" id="old_password">
+								</div>
+								<div class="form-group">
+									<label for="new_password">New Password</label>
+									<input type="password" class="form-control" name="new_password" id="new_password">
+								</div>
+								<div class="form-group">
+									<label for="confirm_password">Confirm Password</label>
+									<input type="password" class="form-control" name="confirm_password" id="confirm_password">
+								</div>
+							</div>
+						</div>
+						<!-- Modal footer -->
+						<div class="modal-footer">
+							<button type="submit" class="btn btn-info" id="password_change_button" disabled>Update</button>
+							<button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+
 		<!-- Include all compiled plugins (below), or include individual files as needed -->
 		<script src="{{ url('/') }}/js/popper.min.js"></script>
 		<script src="{{ url('/') }}/js/bootstrap.min.js"></script>
@@ -57,6 +96,7 @@
 		<!-- Plugins -->
 		<script src="{{ url('/') }}/js/plugins.js"></script>
 
+		<script src="{{ url('/') }}/js/custom.js"></script>
 
 	</body>
 
