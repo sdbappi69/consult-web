@@ -22,3 +22,5 @@ Route::group(['middleware' => 'auth'],function (){
         Route::post('/update','UserController@profileUpdate')->name('profile.update');
     });
 });
+Route::get('/service/{alias}', 'ServiceController@index');
+Route::get('/category/{alias}', 'CategoryController@index');
