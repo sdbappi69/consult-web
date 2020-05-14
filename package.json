@@ -22,5 +22,10 @@
         "sass-loader": "^8.0.0",
         "vue": "^2.5.17",
         "vue-template-compiler": "^2.6.10"
+    },
+    "dependencies": {
+        "btoa": "^1.2.1",
+        "command-line-args": "^5.1.1",
+        "jssha": "^3.1.0"
     }
 }

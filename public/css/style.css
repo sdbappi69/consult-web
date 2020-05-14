@@ -2026,7 +2026,7 @@ a.order-st2 {
 
 .plan-st3 ul {
 	padding: 0;
-	margin: 30px 0;
+	/*margin: 30px 0;*/
 	list-style: none;
 }
 
@@ -4313,7 +4313,7 @@ a.related-title {
 
 .landing-team-sec .teamwork-members .member:nth-child(2) {
 	border-right: 0;
-	border-left: 0; 
+	border-left: 0;
 }
 
 .landing-team-sec .teamwork-members .member:nth-child(3) {
@@ -4488,7 +4488,7 @@ a.related-title {
 }
 
 .landing-page-footer .block-footer ul li a:hover {
-	color: #65C139;	
+	color: #65C139;
 }
 
 .landing-page-footer .copyrights-hr {
@@ -4544,7 +4544,7 @@ a.related-title {
 }
 
 .landing-page-footer ul.socialmedia li a:hover {
-	color: #65C139;	
+	color: #65C139;
 }
 
 .landing-page-footer p.copy-line {

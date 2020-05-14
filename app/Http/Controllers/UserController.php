@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Appointment;
+use Carbon\Carbon;
 use Validator;
 use Illuminate\Http\Request;
 
@@ -57,4 +59,24 @@ class UserController extends Controller
         }
     }
 
+    public function history(Request $request){
+        $req = $request->all();
+        $appointment = Appointment::with('provider','category','client','medium')->where('client_id',auth()->user()->id)->paginate(10);
+        return view('user.history',compact('appointment','req'));
+    }
+
+    public function historyView(Request $request, $id){
+        $appointment = Appointment::findOrFail($id);
+        $to = Carbon::createFromFormat('h:i A', $appointment->start);
+        $from = Carbon::createFromFormat('h:i A', $appointment->end)->addMinute(10);
+        $diff_in_minutes = $to->diffInSeconds($from);
+        $cmd = shell_exec('node generateToken --key=4d8dc97794474e66a9a483f1d30251ba --appID=806a43.vidyo.io --userName='.explode(' ',auth()->user()->name)[0].' --expiresInSecs='.$diff_in_minutes);
+        $execute_data = preg_split('/\r\n|\r|\n/',$cmd);
+        $call_token = null;
+        $room_name = substr($appointment->provider->email,0,5).'_'.$appointment->id.'_'.substr($appointment->client->email,0,5);
+        if(isset($execute_data[8])){
+            $call_token = $execute_data[8];
+        }
+        return view('user.historyView',compact('appointment','call_token','room_name'));
+    }
 }

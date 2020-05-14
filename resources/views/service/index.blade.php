@@ -16,22 +16,22 @@
 
 			<div class="features-bg1-modern">
 
-				@foreach($service->categories as $category)
+			@foreach($service->categories as $category)
 
-					@php
-						$attributes = json_decode($category->attributes, true);
-						if(isset($attributes['fa_icon']) && $attributes['fa_icon'] != ''){
-							$fa_icon = $attributes['fa_icon'];
-						}else{
-							$fa_icon = 'fa-circle';
-						}
-					@endphp
+				@php
+					$attributes = json_decode($category->attributes, true);
+                    if(isset($attributes['fa_icon']) && $attributes['fa_icon'] != ''){
+                        $fa_icon = $attributes['fa_icon'];
+                    }else{
+                        $fa_icon = 'fa-circle';
+                    }
+				@endphp
 
-					<!-- Item -->
+				<!-- Item -->
 					<div class="support-modlyo-item">
 						<i class="fa {{ $fa_icon }}"></i>
 						<span>{{ $category->name }}</span>
-						<a href="{{ url('/') }}/category/{{ $category->alias }}">Book an Appointment</a>
+						<a href="{{ route('category',$category->alias )}}">Book an Appointment</a>
 					</div>
 
 				@endforeach
@@ -40,7 +40,7 @@
 
 		@else
 
-			<!-- Error -->
+		<!-- Error -->
 			<div class="error-p">
 				<div class="title-error">
 					<p>COMING SOON</p>
@@ -52,11 +52,11 @@
 
 		<div class="clearfix"></div>
 
-		@include('home.faq')
+	@include('home.faq')
 
-		<!-- Partners -->
+	<!-- Partners -->
 		<div class="clearfix"></div>
-		
+
 	</div>
 	<!-- /Container -->
 

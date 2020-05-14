@@ -13,19 +13,20 @@
 		<!-- Favicon -->
 		<link rel="icon" type="image/ico" href="img/favicon.ico">
 		<!-- Bootstrap -->
-		<link href="{{ url('/') }}/css/bootstrap.min.css" rel="stylesheet">
+		<link href="{{asset('/') }}/css/bootstrap.min.css" rel="stylesheet">
 		<!-- Font Awesome -->
-		<link href="{{ url('/') }}/css/font-awesome.min.css" rel="stylesheet">
+		<link href="{{asset('/') }}/css/font-awesome.min.css" rel="stylesheet">
 		<!-- Owl Carousel -->
-		<link rel="stylesheet" href="{{ url('/') }}/css/owl.carousel.min.css">
-		<link rel="stylesheet" href="{{ url('/') }}/css/owl.theme.default.min.css">
+		<link rel="stylesheet" href="{{asset('/') }}/css/owl.carousel.min.css">
+		<link rel="stylesheet" href="{{asset('/') }}/css/owl.theme.default.min.css">
 		<!-- Custom Style -->
-		<link href="{{ url('/') }}/css/style.css" rel="stylesheet">
-		<link href="{{ url('/') }}/css/default_theme.css" rel="stylesheet">
+		<link href="{{asset('/') }}/css/style.css" rel="stylesheet">
+		<link href="{{asset('/') }}/css/default_theme.css" rel="stylesheet">
+		@yield('css')
 		<!-- Responsive Style -->
-		<link href="{{ url('/') }}/css/responsive.css" rel="stylesheet">
-		<link href="{{ url('/') }}/css/custom.css" rel="stylesheet">
-
+		<link href="{{asset('/') }}/css/responsive.css" rel="stylesheet">
+		<link href="{{asset('/') }}/css/custom.css" rel="stylesheet">
+		@stack('css')
 		<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 		<!--[if lt IE 9]>
@@ -34,7 +35,8 @@
 	    <![endif]-->
 
 	    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-		<script src="{{ url('/') }}/js/jquery-2.2.4.min.js"></script>
+		<script src="{{asset('/') }}/js/jquery-2.2.4.min.js"></script>
+
 
 	</head>
 
@@ -45,7 +47,7 @@
 			@include('layout.header')
 
 			@yield('content')
-
+			@include('partials.status')
 			<!-- Footer -->
 			@include('layout.footer')
 		</div>
@@ -89,15 +91,16 @@
 		</div>
 
 		<!-- Include all compiled plugins (below), or include individual files as needed -->
-		<script src="{{ url('/') }}/js/popper.min.js"></script>
-		<script src="{{ url('/') }}/js/bootstrap.min.js"></script>
+		<script src="{{asset('/') }}/js/popper.min.js"></script>
+		<script src="{{asset('/') }}/js/bootstrap.min.js"></script>
 		<!-- Owl Carousel -->
-		<script src="{{ url('/') }}/js/owl.carousel.min.js"></script>
+		<script src="{{asset('/') }}/js/owl.carousel.min.js"></script>
 		<!-- Plugins -->
-		<script src="{{ url('/') }}/js/plugins.js"></script>
-
-		<script src="{{ url('/') }}/js/custom.js"></script>
-
+		<script src="{{asset('/') }}/js/plugins.js"></script>
+		<script src="{{asset('/') }}/js/sweet_alert.js"></script>
+		@yield('script')
+		<script src="{{asset('/') }}/js/custom.js"></script>
+		@stack('script')
 	</body>
 
 </html>

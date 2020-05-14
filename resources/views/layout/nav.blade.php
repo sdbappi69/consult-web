@@ -20,7 +20,7 @@
 					}
 				@endphp
 				<li>
-					<a href="{{ url('/') }}/service/{{ $data->alias }}">
+					<a href="{{ route('service',$data->alias) }}">
 					<span class="fa {{ $fa_icon }} menu-ser"></span>{{ $data->name }}</a>
 				</li>
 			@endforeach
@@ -47,7 +47,7 @@
 						<span class="fa fa-key menu-ser"></span>Change Password</a>
 				</li>
 				<li>
-					<a href="cloud-hosting.html">
+					<a href="{{route('history')}}">
 						<span class="fa fa-refresh menu-ser"></span>History</a>
 				</li>
 				<li>

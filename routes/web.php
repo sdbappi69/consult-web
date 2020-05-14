@@ -20,7 +20,15 @@ Route::group(['middleware' => 'auth'],function (){
     Route::group(['prefix' => 'profile'],function (){
         Route::get('/','UserController@profile')->name('profile');
         Route::post('/update','UserController@profileUpdate')->name('profile.update');
+        Route::get('/history', 'UserController@history')->name('history');
+        Route::get('/history/{id}/view', 'UserController@historyView')->name('history.view');
     });
+    Route::group(['prefix' => 'appointment'],function (){
+        Route::post('/{id}/update-log','AppointmentController@updateTimeLog')->name('appointment.time.log');
+        Route::post('/{id}/log-get','AppointmentController@getTimeLog')->name('appointment.time.log.get');
+    });
+    Route::post('/appointment-book', 'AppointmentController@store')->name('appointment.store');
 });
-Route::get('/service/{alias}', 'ServiceController@index');
-Route::get('/category/{alias}', 'CategoryController@index');
+Route::get('/service/{alias}', 'ServiceController@index')->name('service');
+Route::get('/category/{alias}', 'CategoryController@index')->name('category');
+Route::post('/category/slot', 'CommonController@categorySlot')->name('category.slot');
